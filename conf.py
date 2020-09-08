@@ -22,14 +22,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Vitis™ Application Acceleration Development Flow Tutorials'
-copyright = '2020, Xilinx'
-author = 'Xilinx'
+project = 'Test Feedback and Versioning Support'
+copyright = '2020'
+author = 'Amandeep Singh Talwar'
 
 # The short X.Y version
-version = '2020.1'
+version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = 'v2020.1'
+release = 'v1.0'
 html_last_updated_fmt = '%B %d, %Y'
 
 # -- General configuration ---------------------------------------------------

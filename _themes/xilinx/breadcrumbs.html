@@ -34,14 +34,19 @@
         {% endfor %}
       <li>{{ title }}</li>
 <li>
-        {% if hasdoc(pagename) %}
+  {%- if feedback_on_github_url %}
+    <li><a href="{{ feedback_on_github_url }}"
+           rel="nofollow">&nbsp;<img src="{{ pathto('_static/feedback.png', true)|e }}" alt="Send Feedback"></a></li>
+  {%- endif %}  
+  
+<!--        {% if hasdoc(pagename) %}
           {% if show_source and has_source and sourcename  %}
 		  <a href="{{ meta['github_url'] }}/issues/new?labels=documentation&title=[Documentation+Issue]+{{ pagename }}{{ suffix }}">&nbsp;<img src="{{ pathto('_static/feedback.png', true)|e }}" alt="Send Feedback"></a>
 		  {{ source_url_prefix }}
-<!--<a href="{{ pathto('issues/new?labels=documentation&title=[Documentation+Issue]+', true)|e }}{{ pagename }}{{ suffix }}">&nbsp;<img src="{{ pathto('_static/feedback.png', true)|e }}" alt="Send Feedback"></a> 
--->
+<a href="{{ pathto('issues/new?labels=documentation&title=[Documentation+Issue]+', true)|e }}{{ pagename }}{{ suffix }}">&nbsp;<img src="{{ pathto('_static/feedback.png', true)|e }}" alt="Send Feedback"></a> 
+
             {% endif %}
-		{% endif %}
+		{% endif %}-->
 </li>
     {% endblock %}
     {% block breadcrumbs_aside %}

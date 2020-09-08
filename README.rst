@@ -19,7 +19,7 @@ Overview
 .. _Getting Started:
 
 
-Getting Started Pathway (Master version)
+Getting Started Pathway (2019.2 version)
 ===========================================
 
 Test
