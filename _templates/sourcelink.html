@@ -11,5 +11,9 @@
     <li><a href="{{ edit_on_github_url }}"
            rel="nofollow">{{ _('Edit on GitHub') }}</a></li>
   {%- endif %}
+  {%- if feedback_on_github_url %}
+    <li><a href="{{ feedback_on_github_url }}"
+           rel="nofollow">{{ _('Submit Feedback') }}</a></li>
+  {%- endif %}  
   </ul>
 {%- endif %}

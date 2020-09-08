@@ -19,6 +19,12 @@ def get_github_url(app, view, path):
         branch=app.config.edit_on_github_branch,
         path=path)
 
+def get_github_feedback(app, view, path):
+    return 'https://github.com/{project}/{view}/{branch}/{path}'.format(
+        project=app.config.edit_on_github_project,
+        view=app.config.feedback_on_github_url,
+        branch=app.config.edit_on_github_branch,
+        path=path)
 
 def html_page_context(app, pagename, templatename, context, doctree):
     if templatename != 'page.html':
@@ -31,12 +37,15 @@ def html_page_context(app, pagename, templatename, context, doctree):
     path = os.path.relpath(doctree.get('source'), app.builder.srcdir)
     show_url = get_github_url(app, 'blob', path)
     edit_url = get_github_url(app, 'edit', path)
+    feedback_url = get_github_feedback(app, 'issues', path)
 
     context['show_on_github_url'] = show_url
     context['edit_on_github_url'] = edit_url
+    context['feedback_on_github_url'] = feedback_url
 
 
 def setup(app):
     app.add_config_value('edit_on_github_project', '', True)
     app.add_config_value('edit_on_github_branch', 'master', True)
+    app.add_config_value('feedback_on_github_url', '', True)	
     app.connect('html-page-context', html_page_context)

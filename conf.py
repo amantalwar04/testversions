@@ -70,6 +70,7 @@ autosectionlabel_prefix_document = True
 # Configure 'Edit on GitHub' extension
 edit_on_github_project = 'amantalwar04/testversions'
 edit_on_github_branch = 'master'
+feedback_on_github_url = 'issues/new?labels=documentation&title=[Feedback]+'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
