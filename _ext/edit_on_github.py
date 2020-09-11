@@ -13,14 +13,14 @@ __licence__ = 'BSD (3 clause)'
 
 
 def get_github_url(app, view, path):
-    return 'https://github.com/{project}/{view}/{branch}/{path}'.format(
+    return 'https://gitenterprise.xilinx.com/{project}/{view}/{branch}/{path}'.format(
         project=app.config.edit_on_github_project,
         view=view,
         branch=app.config.edit_on_github_branch,
         path=path)
 
 def get_github_feedback(app, view, path):
-    return 'https://github.com/{project}/{view}/{branch}/{path}'.format(
+    return 'https://gitenterprise.xilinx.com/{project}/{view}/{branch}/{path}'.format(
         project=app.config.edit_on_github_project,
         view=app.config.feedback_on_github_url,
         branch=app.config.edit_on_github_branch,
