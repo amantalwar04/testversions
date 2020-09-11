@@ -69,7 +69,7 @@ autosectionlabel_prefix_document = True
 
 # Configure 'Edit on GitHub' extension
 edit_on_github_project = 'atalwar/testversions'
-edit_on_github_branch = 'master'
+edit_on_github_branch = '2019.2'
 feedback_on_github_url = 'issues/new?labels=documentation&title=[Feedback]+'
 
 # Add any paths that contain templates here, relative to this directory.
@@ -207,7 +207,7 @@ epub_exclude_files = ['search.html']
 
 # -- Extension configuration -------------------------------------------------
 # At the bottom of conf.py
-github_doc_root = 'https://xilinx.github.io/Vitis-Tutorials/2020-1/docs/'
+github_doc_root = ''
 def setup(app):
     app.add_config_value('recommonmark_config', {
             'url_resolver': lambda url: github_doc_root + url+'.html',
@@ -225,7 +225,7 @@ rst_epilog = """
 
 # -- Extension configuration -------------------------------------------------
 # At the bottom of conf.py
-#github_doc_root = 'https://xilinx.github.io/Vitis-Tutorials/2020-1/docs/'
+#github_doc_root = ''
 #def setup(app):
 #    app.add_config_value('recommonmark_config', {
 #            'url_resolver': lambda url: github_doc_root + url,
