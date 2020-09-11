@@ -305,7 +305,7 @@
             
             
               <div class="version">
-                1.0
+                2019.2
               </div>
             
           
@@ -338,15 +338,22 @@
 
             
 			
+				<h3>Versions</h3>
+				<ul>
+				  <li><a href=""></a></li>
+				  <li><a href=""></a></li>
+				  <li><a href=""></a></li>
+				</ul>
+			
 			<p class="caption"><span class="caption-text">This Page</span></p>
 				<ul class="current">
 				  <li class="toctree-l1"><a href="_sources/README.rst.txt"
 						rel="nofollow">Show Source</a></li>
-					<li class="toctree-l1"><a href="https://github.com/amantalwar04/testversions/blob/master/README.rst"
+					<li class="toctree-l1"><a href="https://gitenterprise.xilinx.com/atalwar/testversions/blob/2019.2/README.rst"
 						   rel="nofollow">View on GitHub</a></li>
-					<li class="toctree-l1"><a href="https://github.com/amantalwar04/testversions/edit/master/README.rst"
+					<li class="toctree-l1"><a href="https://gitenterprise.xilinx.com/atalwar/testversions/edit/2019.2/README.rst"
 						   rel="nofollow">Edit on GitHub</a></li>
-                    <li><a href="https://github.com/amantalwar04/testversions/issues/new?labels=documentation&title=[Feedback]+/master/README.rst"
+                    <li><a href="https://gitenterprise.xilinx.com/atalwar/testversions/issues/new?labels=documentation&title=[Feedback]+/2019.2/README.rst"
                             rel="nofollow">Submit Feedback</a></li> 
 				</ul>
           
@@ -392,9 +399,9 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Overview</li>
+      <li>Pytest Fixtures and Options v2019.2</li>
 <li>
-    <li><a href="https://github.com/amantalwar04/testversions/issues/new?labels=documentation&title=[Feedback]+/master/README.rst"
+    <li><a href="https://gitenterprise.xilinx.com/atalwar/testversions/issues/new?labels=documentation&title=[Feedback]+/2019.2/README.rst"
            rel="nofollow">&nbsp;<img src="_static/feedback.png" alt="Send Feedback"></a></li>  
   
 <!--        
@@ -427,15 +434,112 @@
             
   <div class="toctree-wrapper compound" id="versions">
 </div>
-<div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="getting-started-pathway-2019-2-version">
-<span id="getting-started"></span><h2>Getting Started Pathway (2019.2 version)<a class="headerlink" href="#getting-started-pathway-2019-2-version" title="Permalink to this headline">¶</a></h2>
-<p>Test</p>
+<div class="section" id="pytest-fixtures-and-options-v2019-2">
+<span id="pytest-fixtures"></span><h1>Pytest Fixtures and Options v2019.2<a class="headerlink" href="#pytest-fixtures-and-options-v2019-2" title="Permalink to this headline">¶</a></h1>
+<p>While the ROAST test framework is test-tool agnostic, pytest fixtures have been provided to
+simplify test creation and execution. The fixtures provided are grouped into three categories.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#configuration-generation" id="id1">Configuration Generation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-configuration" id="id2">create_configuration</a></p></li>
+<li><p><a class="reference internal" href="#get-cmdl-machine-opt" id="id3">get_cmdl_machine_opt</a></p></li>
+<li><p><a class="reference internal" href="#override-option" id="id4">–override option</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#board-acquisition" id="id5">Board Acquisition</a></p>
+<ul>
+<li><p><a class="reference internal" href="#board-session" id="id6">board_session</a></p></li>
+<li><p><a class="reference internal" href="#get-board" id="id7">get_board</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#scenario-generation" id="id8">Scenario Generation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-scenario" id="id9">create_scenario</a></p></li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="section" id="intermediate">
-<span id="id1"></span><h2>Intermediate<a class="headerlink" href="#intermediate" title="Permalink to this headline">¶</a></h2>
-<p>Test</p>
+<p>Please review <span class="xref std std-ref">pytest-fixture-usage</span> for usage examples.</p>
+<div class="section" id="configuration-generation">
+<h2><a class="toc-backref" href="#id1">Configuration Generation</a><a class="headerlink" href="#configuration-generation" title="Permalink to this headline">¶</a></h2>
+<p>The features in this section provide functionality related to generating a test configuration.</p>
+<div class="section" id="create-configuration">
+<h3><a class="toc-backref" href="#id2">create_configuration</a><a class="headerlink" href="#create-configuration" title="Permalink to this headline">¶</a></h3>
+<p>This fixture will generate a configuration based on the location of the test file being executed.
+The optional parameters to this fixture are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_name</span></code> - This specifies a test configuration to be retrieved in a subdirectory
+relative to the test file. If not provided, this will resolve to <code class="docutils literal notranslate"><span class="pre">request.node.name</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_params</span></code> - The list provided is written to the base_params attribute of the
+configuration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">params</span></code> - This allows a list of test configurations to be retrieved in subdirectories
+relative to the test file. This is typically used to retrieved definitions when parameterizing
+tests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">machine</span></code> - This specifies an override file based on the machine type where the test will be
+executed.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">roast.confParser.generate_conf()</span></code></p>
+</div>
+</div>
+<div class="section" id="get-cmdl-machine-opt">
+<h3><a class="toc-backref" href="#id3">get_cmdl_machine_opt</a><a class="headerlink" href="#get-cmdl-machine-opt" title="Permalink to this headline">¶</a></h3>
+<p>This fixture retrieves the values used when pytest is invoked with the command line option
+<code class="docutils literal notranslate"><span class="pre">--machine</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest --machine=versal,zynq
+</pre></div>
+</div>
+</div>
+<div class="section" id="override-option">
+<h3><a class="toc-backref" href="#id4">–override option</a><a class="headerlink" href="#override-option" title="Permalink to this headline">¶</a></h3>
+<p>This option when invoking pytest allows the user to specify an override file or key/value pairs
+to overwrite the configuration generated from files.</p>
+<p>Examples:</p>
+<p>To override a variable named “my_version”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest --override=&quot;my_version=2020.1&quot;
+</pre></div>
+</div>
+<p>To override a list variable named “my_list”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest --override=&quot;my_list=c,d&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="board-acquisition">
+<h2><a class="toc-backref" href="#id5">Board Acquisition</a><a class="headerlink" href="#board-acquisition" title="Permalink to this headline">¶</a></h2>
+<p>The fixtures in this section provide wrappers for easy board acquisition.</p>
+<div class="section" id="board-session">
+<h3><a class="toc-backref" href="#id6">board_session</a><a class="headerlink" href="#board-session" title="Permalink to this headline">¶</a></h3>
+<p>This fixture will return an instantiated <code class="docutils literal notranslate"><span class="pre">Board</span></code> object based on the <code class="docutils literal notranslate"><span class="pre">board_type</span></code> keyword
+argument. By default, <code class="docutils literal notranslate"><span class="pre">board_type=&quot;target&quot;</span></code> and will return a <code class="docutils literal notranslate"><span class="pre">TargetBoard</span></code> object. However,
+a custom <code class="docutils literal notranslate"><span class="pre">Board</span></code> class can be written and registered as a new type to be called through this
+fixture.</p>
+</div>
+<div class="section" id="get-board">
+<h3><a class="toc-backref" href="#id7">get_board</a><a class="headerlink" href="#get-board" title="Permalink to this headline">¶</a></h3>
+<p>This fixture wraps <a class="reference internal" href="#board-session">board_session</a> and attempts to retrieve the <code class="docutils literal notranslate"><span class="pre">board_interface</span></code> key
+from the configuration to be used as the <code class="docutils literal notranslate"><span class="pre">board_type</span></code>. If not found,
+<code class="docutils literal notranslate"><span class="pre">board_type=&quot;target&quot;</span></code> is used.</p>
+<p>Upon return, the <code class="docutils literal notranslate"><span class="pre">Board</span></code> object will have attributes such as:</p>
+<ul class="simple">
+<li><p>config</p></li>
+<li><p>target_console - console session with a board</p></li>
+</ul>
+<p>Additionally, the <code class="xref py py-func docutils literal notranslate"><span class="pre">start()</span></code> method will be called to initialized the board.</p>
+</div>
+</div>
+<div class="section" id="scenario-generation">
+<h2><a class="toc-backref" href="#id8">Scenario Generation</a><a class="headerlink" href="#scenario-generation" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#create-scenario">create_scenario</a> fixture is an all-in-one wrapper for configuration generation and
+automated loading of test suites and system components of a test system.</p>
+<div class="section" id="create-scenario">
+<h3><a class="toc-backref" href="#id9">create_scenario</a><a class="headerlink" href="#create-scenario" title="Permalink to this headline">¶</a></h3>
+<p>This fixture wraps <a class="reference internal" href="#create-configuration">create_configuration</a> and calls <code class="xref py py-func docutils literal notranslate"><span class="pre">roast.component.scenario()</span></code> to return
+a <code class="docutils literal notranslate"><span class="pre">Scenario</span></code> object which contains handles to all loaded plugins (instantiated classes).</p>
+</div>
 </div>
 </div>
 
@@ -466,7 +570,7 @@
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on September 08, 2020.
+        Last updated on September 10, 2020.
       </span>
 
     </p>
@@ -477,7 +581,39 @@
 
   
 
-
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions</span>
+      2019.2
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/atalwar/testversions/2019.2/html/README.html">2019.2</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="/atalwar/testversions/gh-pages/html/README.html">gh-pages</a></dd>
+          
+        
+          
+          <dd><a href="/atalwar/testversions/master/html/README.html">master</a></dd>
+          
+        
+      </dl>
+      
+      
+      
+      <hr/>
+      Copyright 2020 <a href="https://www.xilinx.com">Xilinx</a>.
+ 
+    </div>
+  </div>
 
 
   <script type="text/javascript">
